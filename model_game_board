@@ -1,0 +1,23 @@
+import 'candy.dart';
+import 'package:flutter/material.dart';
+
+class GameBoardModel {
+  final int rows;
+  final int cols;
+  late List<List<Candy>> board;
+
+  GameBoardModel({required this.rows, required this.cols});
+
+  void initializeBoard() {
+    board = List.generate(rows, (row) {
+      return List.generate(cols, (col) {
+        return _generateRandomCandy();
+      });
+    });
+  }
+
+  Candy _generateRandomCandy() {
+    List<Color> colors = [Colors.red, Colors.blue, Colors.green, Colors.yellow, Colors.orange];
+    return Candy(color: colors[DateTime.now().millisecond % colors.length], type: "regular");
+  }
+}

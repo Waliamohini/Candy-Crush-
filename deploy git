@@ -1,0 +1,7 @@
+#!/bin/bash
+flutter build web
+git add build/web
+git commit -m "Build web version"
+git subtree push --prefix build/web origin gh-pages
+chmod +x web_deploy.sh
+./web_deploy.sh
